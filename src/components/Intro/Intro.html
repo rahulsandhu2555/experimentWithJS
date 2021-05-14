@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript Hello World Example</title>
+<!--    <script>-->
+<!--        alert('Hello, World!'); // should not be directly used inside-->
+<!--    </script>-->
+    <script src="./scrtp.js"></script>
+    <script src="js/service.js"></script>
+    <script src="js/app.js"></script>
+
+    --> JS engine interpretates in the same order
+
+    the page will be empty until all the scripts are loaded, to avoid this, use <script></script> before '</body>'
+
+    <script defer src="defer-script.js"></script>
+    <!--    defer downloads the script asynchronously but executes only after the complete page is loaded, after recieving
+        the </html> closing html tag-->
+    <!--    but if async is there in head, it will execute the scripts as soon as it downloads the script, will stop the
+    rendering during execution-->
+</head>
+<body>
+    <!--async and defer--> for loading external files only
+    async is used to load the files asyncronously, but if there are two files loading, it is not mandate that files will
+    be executed in that order, that's why make sure both are independed from each other.
+    <script async src="service.js"></script>
+    <script async src="app.js"></script>
+    app.js may execute before
+
+    <!-- end of page content here-->
+    <script src="js/service.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
