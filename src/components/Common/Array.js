@@ -188,4 +188,52 @@ console.table(activities);
 
 //Accessing a out-of-bounds array element returns undefined
 
+//Array destructuring ES6 =>
+    function getScores() {
+        return [70, 80, 90];
+    }
+    let [x, y, z] = getScores(); //=> in [x, y, z] it looks like array syntax but it is not array
+        //[70, 80] => z will be undefined
+        //[70, 80, 90, 100] => 100 will be ignored
 
+    //with rest operator
+    let [x2, y2 ,...args] = getScores();
+        //args => [90, 100]
+    //assignment using array destructuring
+        let a, b;
+        [a, b] = [10, 20];
+    //setting default value in the array destructure
+        // let [, , thirdItem = 0] = getItems();
+    //in array is not returned, gives error
+        function getItems() {
+            return null;
+        }
+        // let [x = 1, y = 2] = getItems(); => gives error
+        //so use like this
+            // let [a = 10, b = 20] = getItems() || [];
+    //nested array destructuring
+        let [
+            firstName,
+            lastName,
+            [
+                color1,
+                color2,
+                color3
+            ]
+        ] = getItems();
+    //Applications of Array destructuring
+        //Swapping
+            // let a = 10,
+            //     b = 20;
+            //
+            // [a, b] = [b, a];
+        //multiple return values from a function
+            function stat(a, b) {
+                return [
+                    a + b,
+                    (a + b) / 2,
+                    a - b
+                ]
+            }
+            let [sum, average, difference] = stat(20, 10);
+            console.log(sum, average, difference); // 30, 15, 10

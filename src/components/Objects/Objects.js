@@ -88,6 +88,43 @@ function ObjectExample(){
             var alien = secureAnimal('?#@');
             alien.identify(); // ?#@ // secure coz it does not allow external method to access, only via the object created
 
+    //Object Destructuring =>
+        let p = {
+            firstName: 'John',
+            lastName: 'Doe'
+        };
+        let {
+            firstName,
+            lastName ='sandhu' //setting default value
+        } = p;
+        //Destructuing a null object will give an error
+            function getPerson() {
+                return null;
+            }
+            let {
+                firstName1,
+                lastName1
+            } = getPerson();
+            console.log(firstName, lastName); // will throw an error
+        // to avoid null error
+            let {
+                firstName2,
+                lastName2
+            } = getPerson() || {};
+        //nested Object destructuring
+            let {
+                name: {
+                    firstName3,
+                    lastName3
+                }
+            } = getPerson();
+        //in function parameters
+            let display = (person) => console.log(`${person.firstName} ${person.lastName}`);
+            let display2 = ({firstName, lastName}) => console.log(`${firstName} ${lastName}`);
+
+
+
+
     return(
         <>Object Example</>
     )

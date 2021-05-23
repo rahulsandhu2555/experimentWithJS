@@ -128,21 +128,6 @@ function FunctionExample(){
         }
     }
 
-    //Arrow Functions
-    // arrowFunction();
-    function arrowFunction(){
-        //arrow function is anonymous, however browser can infer name from the assigned variable
-        const obj = { name: 'rahul'};
-        const fn = (obj) => console.log(obj.name)
-        fn(obj);
-
-        ((obj) => console.log(obj.name))(obj);
-        // when using single parameter () is optional
-        // when single statement {} is optional
-        const value = 2;
-        console.log((value => value *2)(value))
-    }
-
     // using new function => does not have a name
     // usingNewFunction();
     function usingNewFunction(){
@@ -233,6 +218,37 @@ function FunctionExample(){
 
     //Factory function => are the functions which return objects
     //if function does not return anything, and will try to access, will print undefined
+
+    //default Parameters
+        // function fn(param1=default1,param2=default2,..) {
+        // }
+        //pass undefined in order to use default parameter
+            //createDiv(undefined,undefined,'solid 5px blue');
+        //evaluating default parameter
+            function requiredArg() {
+                throw new Error('The argument is required');
+            }
+            function add(x = requiredArg(), y = requiredArg()){
+                return x + y;
+            }
+
+            add(10); // error
+            add(10,20); // OK
+        //other parameters in the default value
+            function add(x = 1, y = x, z = x + y) {
+                return x + y + z;
+            }
+            console.log(add()); // 4
+            // parameter list seems to have its own scope,
+            //if you will try to access the parameter, which is not initialized yet, you will get reference error
+                function subtract( x = y, y = 1 ) {
+                    return x - y;
+                }
+                subtract(10); // Uncaught ReferenceError: Cannot access 'y' before initialization
+        //using functions in default parameter
+            let taxRate = () => 0.1;
+            let getPrice = function( price, tax = price * taxRate() ) {}
+
 
     return<>function </>
     //to return multiple values, use array or object

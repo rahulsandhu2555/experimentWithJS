@@ -8,19 +8,28 @@ import CommonFunction from "./components/Common/CommonFunction";
 import PrototypeExample from "./components/Common/Prototype";
 import ObjectExample from "./components/Objects/Objects";
 import BOMIntro from "./components/BOM/intro";
+import {Sibling} from "./components/DOM/intro";
+import {ManipulatingElements} from "./components/DOM/manipulatingElements";
+import {EventHandler} from "./components/DOM/event";
+import Dashboard from "./components/Dashboard/Dashboard";
 
 function App() {
 
 
   return (
     <div className="App">
+        {/*<Dashboard/>*/}
         {/*<CommonFunction/>*/}
         {/*<Currying/>*/}
         {/*<FunctionExample/>*/}
         {/*<ObjectExample/>*/}
         {/*<PrototypeExample/>*/}
-        <BOMIntro/>
+        {/*<BOMIntro/>*/}
+        {/*Document Object Model*/}
+        {/*<Sibling/>*/}
         {/*<Debouncing/>*/}
+        {/*<ManipulatingElements/>*/}
+        {/*<EventHandler/>*/}
       {/*<PromiseExample/>*/}
     </div>
   );

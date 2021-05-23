@@ -47,7 +47,17 @@ console.log(null == undefined); // true
 
 //Symbol
     console.log(Symbol() == Symbol()); // false creates new value on every call
-    const click = Symbol('click'); // click symbol is unique
+    const click = Symbol('click on'); // click symbol is unique
+    console.log(click) //=> Symbol('click on')
+    console.log(typeof click) //=> symbol
+    //Symbol is primitive, so if you will try to create the value with the new keyword it will throw the error
+        let s = new Symbol(); // error
+    //Symbol.for()
+        //accepts description, and searches in the global registry, if found returns that symbol, if not creates one
+        let ssn = Symbol.for('ssn');
+    // Symbol.keyFor() => to get the key associated with that Symbol
+        //console.log(Symbol.keyFor(citizenID)); // 'ssn'
+        //if not able to find the key, then returns undefined
 
 // Object => collection of properties
     let person = {
