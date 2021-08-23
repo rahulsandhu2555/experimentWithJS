@@ -1,5 +1,64 @@
 import React from "react";
+/*
+    sequential vs concurrent vs paralled execution
 
+
+    function resolveHello(){
+        return new Promise(resolve => {
+            setTimeout(function (){
+                resolve('hello')
+            },2000)
+        }}
+    }
+    function resolveWorld(){
+        return new Promise(resolve => {
+            setTimeout(function (){
+                resolve('world')
+            },1000)
+        }}
+    }
+
+    Sequential =>
+    async function sequentialStart(){
+        const hello = await resolveHello()
+        console.log(hello); //  logs hello after two second
+
+        const world  await resolveWorld()
+        console.log(world); // logs world after 1 sec
+    }
+    sequentialStart()
+    //completes and takes 3 sec
+
+    Concurrent =>
+    async function concurrentStart(){
+        const hello = resolveHello()
+        const world = resolveWorld()
+
+        console.log(await hello) // logs after 2 seconds
+        console.log(await world) // logs after 2 seconds
+    }
+    concurrentStart()
+    //completes in 2 seconds
+
+    Parallel Execution =>
+    function parallelExecution(){
+        Promise.all([
+            (async () => console.log(await resolveHello()))(), //logs after 2 sec
+            (async () => console.log(await resolveWorld()))(), //logs after 2 sec
+        ]}
+    }
+    async function parallelExecution(){
+        await Promise.all([
+            (async () => console.log(await resolveHello()))(), //logs after 2 sec
+            (async () => console.log(await resolveWorld()))(), //logs after 2 sec
+        ]}
+    }
+    parallelExecution();
+    // total time taken 2 sec
+
+
+
+ */
 function AsyncAwait(){
 
     const x = false;

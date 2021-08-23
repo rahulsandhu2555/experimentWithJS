@@ -1,5 +1,33 @@
 //Arrow Functions
 // arrowFunction(); => lexically binds variables with the function
+
+const person ={
+    name: 'rahul',
+    sayMyname(){
+        const withLastName = function (){
+            return `${this.name} sandhu`
+        }
+        console.log(withLastName());
+    }
+}
+person.sayMyname(); //will print => undefined sandhu
+    //because when we are calling withLastName(), it is neither implicit, explicit, or new, so it is default and this
+    //refers to the global object and global does not have any variable named name so undefined
+
+// this can be resolved by the arrow function, using the lexical scoping
+const person2 ={
+    name: 'rahul',
+    sayMyname(){
+        const withLastName = () => {
+            return `${this.name} sandhu`
+        }
+        console.log(withLastName());
+    }
+}
+person2.sayMyname(); //will print => rahul sandhu
+    //coz when moved to this.name, it checked in its parent, sayMyName(), and checked its scope, it was being called by
+    //person2, to it took the reference for this from person2
+
 function arrowFunction(){
     //arrow function is anonymous, however browser can infer name from the assigned variable
     const obj = { name: 'rahul'};

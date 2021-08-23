@@ -1,7 +1,264 @@
 import React from "react";
 
 export default function PrototypeExample(){
-    const x1 = true;
+    //Arrow function don't have Prototypes
+    //in JS every function has a property called prototype that references and object
+    //we can make use of prototype object to define all our sharable methods, instead of having to create separate
+    //object
+
+    exampleWhyNeedPrototype();
+    function exampleWhyNeedPrototype(){
+        //Need of prototype by example
+        //lets say we need to create multiple Person object with property and methods
+            let person = {};
+            person.name = 'rahul';
+            person.sayMyName = function (){
+                console.log(`my name is ${this.name}`);
+            }
+            person.eat = function (food){
+                console.log(`eating ${food}`);
+            }
+            person.sleep = function (){
+                console.log(`sleeping`);
+            }
+        //to create multiple Person like this, we will need to create a function
+            function Person(name){
+                let person = {};
+                person.name = name;
+                person.sayMyName = function (){
+                    console.log(`my name is ${this.name}`);
+                }
+                person.eat = function (food){
+                    console.log(`eating ${food}`);
+                }
+                person.sleep = function (){
+                    console.log(`sleeping`);
+                }
+                return person;
+            }
+            const rahul = Person('rahul');
+            console.log(rahul.name);
+            rahul.sayMyName();
+            rahul.eat('Pizza');
+            rahul.sleep();
+
+            //Issue with this is, every time we are creating a new Person, we are creating same methods every time,
+            //and allocating memory, what we can do is separate the usable function and pass the reference
+
+            const personMethods = {
+                sayMyName(){
+                    console.log(`my name is ${this.name}`);
+                },
+                eat(food){
+                    console.log(`eating ${food}`);
+                },
+                sleep (){
+                    console.log(`sleeping`);
+                }
+            }
+            //now pass this function reference while creating Object
+            function PersonWithSharedMethods(name){
+                let person = {};
+                person.name = name;
+                person.sayMyName = personMethods.sayMyName;
+                person.eat = personMethods.eat;
+                person.sleep = personMethods.sleep;
+                return person
+            }
+            const rahul2 = PersonWithSharedMethods('sandhu');
+            console.log(rahul2.name);
+            rahul2.sayMyName();
+            rahul2.eat('Pizza');
+            rahul2.sleep();
+
+            //To ease further use Object.create
+                //it takes object as a parameter
+            function PersonWithObjectDotCreate(name){
+                let person = Object.create(personMethods);
+                person.name = name;
+                return person
+            }
+            //now no need to define the methods explicitly,
+            const rahul3 = PersonWithObjectDotCreate('rahulsandhu');
+            console.log(rahul3.name);
+            rahul3.sayMyName();
+            rahul3.eat('Pizza');
+            rahul3.sleep();
+            //coz when we are calling .sayMyName it searches in PersonWithObjectDotCrate, when not found, it checks
+            //that person was created with Object.create, so delegated to the personMethods and checks there,
+            //because of implicit binding rahul3.name => 'rahulsandhu' gets printed
+
+            //Using prototype for sharable methods
+            PersonWithPrototypeFunction.prototype.sayMyName  = function (){
+                console.log(`my name is ${this.name}`);
+            }
+            PersonWithPrototypeFunction.prototype.eat = function (food){
+                console.log(`eating ${food}`);
+            }
+            PersonWithPrototypeFunction.prototype.sleep = function (){
+                console.log(`sleeping`);
+            }
+            function PersonWithPrototypeFunction(name){
+                let person = Object.create(PersonWithPrototypeFunction.prototype);
+                person.name = name;
+                return person
+            }
+            const rahul4 = PersonWithPrototypeFunction('sandhurahul');
+            console.log(rahul4.name);
+            rahul4.sayMyName();
+            rahul4.eat('Pizza');
+            rahul4.sleep();
+
+            //With using 'new' Keywords
+            //Using prototype for sharable methods
+            PersonWithNewKeyword.prototype.sayMyName  = function (){
+                console.log(`my name is ${this.name}`);
+            }
+            PersonWithNewKeyword.prototype.eat = function (food){
+                console.log(`eating ${food}`);
+            }
+            PersonWithNewKeyword.prototype.sleep = function (){
+                console.log(`sleeping`);
+            }
+            function PersonWithNewKeyword(name){
+                 // let this = Object.create(PersonWithNewKeyword.prototype);
+                this.name = name;
+                // return  this;
+            }
+            //coz when we are calling with the new keyword
+                // let this = Object.create(PersonWithNewKeyword.prototype);
+                // return  this;
+                //these two parts are being taken care immediately, this object points to the prototype object
+            const rahul5 = new PersonWithNewKeyword('newRahul');
+            console.log(rahul5.name);
+            rahul5.sayMyName();
+            rahul5.eat('Pizza');
+            rahul5.sleep();
+
+            //1. Constructor Property
+                //on every prototype there is a property called constructor, which points back to function itself
+            console.log(PersonWithNewKeyword.prototype);
+            //{sayMyName: ƒ, eat: ƒ, sleep: ƒ, constructor: ƒ}
+            console.log(PersonWithNewKeyword.prototype.constructor);
+            // ƒ PersonWithNewKeyword(name) {
+            //     this.name = name;
+            // }
+
+            //2. Object.getPrototypeOf()
+                //Object.getPrototypeOf(rahul5) => will give the prototype of the Object
+            console.log(Object.getPrototypeOf(rahul5));
+            //{sayMyName: ƒ, eat: ƒ, sleep: ƒ, constructor: ƒ}
+            console.log(Object.getPrototypeOf(rahul5).constructor);
+            // ƒ PersonWithNewKeyword(name) {
+            //     this.name = name;
+            // }
+            console.log(rahul5.constructor);
+            // ƒ PersonWithNewKeyword(name) {
+            //     this.name = name;
+            // }
+
+            //3. instanceof
+            //to check if the object is instance of constructor function
+            console.log(rahul5 instanceof PersonWithNewKeyword);
+                //under the hood it checks the prototype of the object
+                console.log(Object.getPrototypeOf(rahul5) === PersonWithNewKeyword.prototype);
+
+    }
+
+    prototypalInheritance();
+    function prototypalInheritance(){
+        //by example => lets say there is a person with property name, and method saymyname()
+            //another Programmer with property name, language, and methods saymyname() and code.
+        //==>> we can do like this
+        //Person
+        function Person(name){
+            this.name = name;
+        }
+        Person.prototype.sayMyName = function (){
+            console.log(`my name is ${this.name}`);
+        }
+
+        //Programmer
+        function Programmer(name, language){
+            this.name = name;
+            this.language = language;
+        }
+        Programmer.prototype.sayMyName = function (){
+            console.log(`my name is ${this.name}`);
+        }
+        Programmer.prototype.code = function (){
+            console.log(`I Like to Code`);
+        }
+
+        //it will work find but we have redundant code, we could have imported properties and methods from the Person
+        //In JS inheritance is possible by prototype object, called prototypal inheritance
+
+        //can be done like this
+        function Programmer2(name, language){
+            // this = Object.create(Programmer2.prototype)
+            Person.call(this, name) //inheriting property
+            this.language = language;
+            // return this
+        }
+        Programmer2.prototype = Object.create(Person.prototype)
+        Programmer2.prototype.code = function (){
+            console.log(`I Like to Code`);
+        }
+
+        const rahul = new Programmer2('rahul', 'JS')
+        rahul.code();
+        rahul.sayMyName();
+
+        //because Programmer prototype is made from Person prototype
+        console.log(rahul.constructor); //shows Person constructor
+        //to fix this
+        Programmer2.prototype.constructor = Programmer2;
+        console.log(rahul.constructor);// now it will show programmer2 constructor
+
+
+        //Prototype Chain
+            //start with object => then object's prototype => object's prtotype's prototype =>
+            // ... until found Object.prototype = null
+
+    }
+
+    // testObject();
+    function testObject(){
+        console.log('========Object========');
+        console.log(Object) // f Object() { [native code] }
+        console.log(Object()) // {}
+        console.log(Object.prototype); //{constructor: ƒ, __defineGetter__: ƒ, __defineSetter__: ƒ, hasOwnProperty: ƒ, __lookupGetter__: ƒ, …}
+        console.log(Object.__proto__); //() { [native code] }
+
+        console.log('========Person========');
+        const person = {
+            name: 'rahul'
+        }
+        console.log(person); //{name: "rahul"}
+        console.log(person.prototype); //undefined
+        console.log(person.__proto__); //{constructor: ƒ, __defineGetter__: ƒ, __defineSetter__: ƒ, hasOwnProperty: ƒ, __lookupGetter__: ƒ, …}
+        console.log();
+        console.log('=========Person Object fn===========');
+        function Person(){
+            this.name = 'sandhu'
+        }
+        const p1 = new Person();
+        console.log(p1); //Person {name: "sandhu"}
+        console.log(p1.prototype); //undefined
+        console.log(p1.__proto__); //{constructor: ƒ}
+
+        console.log('=========function==============');
+        function personFunction(){
+            console.log('------ person function---------');
+        }
+        console.log(personFunction);
+            // ƒ personFunction() {
+            //     console.log('------ person function---------');
+            // }
+        console.log(personFunction.prototype); //{constructor: ƒ}
+    }
+
+    const x1 = false;
     if(x1)
     {
         //is a mechanism by which objects inherit properties from one another
@@ -135,8 +392,10 @@ export default function PrototypeExample(){
             teacher.teach = function (subject) {
                 return "I can teach " + subject;
             }
-            console.log(Object.getPrototypeOf(teacher) === person); // true
+            //console.log(Object.getPrototypeOf(teacher) === person); // true
     return(
         <>prototype</>
     )
 }
+
+

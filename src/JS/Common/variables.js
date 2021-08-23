@@ -1,3 +1,7 @@
+//loosely typed, just named placeholders for values
+
+const $ = 5;
+console.log($);
 //primitives are stored in stack
 //while reference types are stored in heap memory
     //var
@@ -19,9 +23,8 @@
             console.log(score);
         }
         //while
-        for (const i = 0; i < scores.length; i++) { // TypeError
-            console.log(scores[i]);
-        }
+        // f
+
 //primitive wrapper types
     //Three => Boolean, Number, String
         let language = 'JavaScript';
@@ -37,4 +40,4 @@
     //const propValue = object.propName ?? defaultValue;
     //if object property propValue is null or undefined, defaultValue is returned
         let counter = { current: 0 };
-        const max = counter.max ?? 100;
+        // const max = counter.max ?? 100;

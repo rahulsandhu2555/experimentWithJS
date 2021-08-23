@@ -1,5 +1,20 @@
+//----------------------------------------------------------------------------------DATA TYPES
+// let and const => block scope
+// var => global scope
+
+// null, undefined, boolean, number, string
+// symbol – available only from ES6
+// complex data type called object
+
+//undefined => only one value
+//null => only one value
+//typeof null => object
+//good practice to assign a variable null, which might hold object later
+
+
 var message;
 console.log(message); // undefined
+console.log(typeof message) // undefined
 // console.log(counter); // ReferenceError: counter is not defined
 
 // Non-strict mode-----------------
@@ -22,19 +37,9 @@ console.log(message); // Hi
 
 
 // JavaScript variable hoisting ------------
-// Parsing => moves all the variable to the top of that scope (Hoisting)
-// Execution => assign values and executes the code
 console.log(message); // undefined => if no hoisting, would have given ReferenceError
 var message;
 
-// let and const => block scope
-// var => global scope
-
-
-//---------------------------------------------------------------------------------------------DATA TYPES
-// null, undefined, boolean, number, string
-// symbol – available only from ES6
-// complex data type called object
 
 console.log(typeof undeclaredVar); // undefined
 // null is an empty object pointer

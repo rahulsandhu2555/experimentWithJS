@@ -63,4 +63,9 @@ import React from "react";
 
 //Fragment or <></>
     //does not create extra node
-    //only key attribute can be passed to the Frangment
+    //only key attribute can be passed to the Fragment
+
+
+//Ways to add React into a website
+    //1. you can import the script and directly use it, but not recommended for production
+        // https://raw.githubusercontent.com/reactjs/reactjs.org/main/static/html/single-file-example.html

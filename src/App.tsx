@@ -1,9 +1,8 @@
 import React from 'react';
 import './App.css';
-import PromiseExample from "./JS/Promise/Promise";
 import FunctionExample from "./JS/Function/Function";
 import Currying from "./JS/Currying/Currying";
-import {Debouncing} from "./JS/Common/Debouncing";
+import {Debouncing} from "./JS/Async/Debouncing";
 import CommonFunction from "./JS/Common/CommonFunction";
 import PrototypeExample from "./JS/Common/Prototype";
 import ObjectExample from "./JS/Objects/Objects";
@@ -11,7 +10,6 @@ import BOMIntro from "./JS/BOM/intro";
 import {Sibling} from "./JS/DOM/intro";
 import {ManipulatingElements} from "./JS/DOM/manipulatingElements";
 import {EventHandler} from "./JS/DOM/event";
-import Dashboard from "./JS/Dashboard/Dashboard";
 import ClassComp from "./React/classComponent";
 import {CheckBind} from "./React/eventBinding";
 import HOC from './React/HOC/HOC';
@@ -30,16 +28,27 @@ import CustomHook from "./React/customHooks/CustomHook";
 import MultipleReducers from "./Redux/MultipleReducers";
 import ReduxLogger from "./Redux/ReduxLogger";
 import ReduxExample from "./Redux/ReduxExample/ReduxExample";
-import ReactRender from "./JS/ReactRender/intro";
+import ReactRender from "./ReactRender/intro";
+import Navbar from "./components/Navbar/Navbar";
 
 function App() {
     // ReactDOM.render(
     //         <h1>gdh</h1>,
     //     document.getElementById('root1')
     // );
-
+    // const str = 'hi string';
+    // const str2 = new String('Hi String 2');
+    // console.log(str)
+    // console.log(str2)
+    //
+    // const num = 2;
+    // const num2 = new Number(2);
+    // console.log(num);
+    // console.log(num2);
   return (
-    <div className="App">
+    <div className="App w-full">
+        {/*<Navbar/>*/}
+
         {/*<div style={{border:'1px solid red', padding:"20px"}} onClickCapture={()=>console.log('3')}>*/}
         {/*    <div style={{border:'1px solid red', padding:"20px"}} onClick={()=>console.log('2')}>*/}
         {/*        <div style={{border:'1px solid red', padding:"20px"}} onClick={(event)=>{*/}
@@ -63,7 +72,7 @@ function App() {
         {/*<ReduxLogger/>*/}
         {/*<UseEffectCounter/>*/}
         {/*<ReduxExample/>*/}
-        <ReactRender/>
+        {/*<ReactRender/>*/}
           {/*<ClassComp/>*/}
           {/*<CheckBind/>*/}
           {/*<HOC/>*/}
@@ -83,6 +92,18 @@ function App() {
         {/*<ManipulatingElements/>*/}
         {/*<EventHandler/>*/}
       {/*<PromiseExample/>*/}
+
+        {/*<div style={{width:'300px', height:'300px', backgroundColor:'red'}}>*/}
+        {/*    <div style={{width:'200px', height:'200px', backgroundColor:'green', position:'relative'}}>*/}
+        {/*        <div style={{width:'100px', height:'100px', backgroundColor:'blue', position:'static', marginLeft:'50px', marginTop:'50px'}}>*/}
+        {/*            <div style={{position:'absolute'}}>*/}
+        {/*                Hi*/}
+        {/*            </div>*/}
+        {/*        </div>*/}
+        {/*    </div>*/}
+        {/*</div>*/}
+
+
     </div>
   );
 }

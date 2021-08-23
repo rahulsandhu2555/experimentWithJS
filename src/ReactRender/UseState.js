@@ -22,6 +22,17 @@ function UseState(props) {
                 //=> will use createElement => and then it will compare the previously rendered tree, if not able to find the change, will not update the DOM
                     //ex=> initial count = 0; +1x5 =5, now try to setCount(5), => will create React Element, and will drop while comparing the changes VDOM
     //uses Object.ease algorithm for comparison
+
+    const updateObj = ()=>{
+        obj.lname = 'sandhu';
+        setObj(obj);// will not re-render, coz reference does not changes, we need to pass the new reference to re-render
+        const newObj = {...obj};
+        newObj.lname = 'sandhu';
+        setObj(newObj) // will cause the re-render as updating to a new reference,
+        //*****  so while updating the reference type in state, make sure do not update it, pass a new reference
+    }
+
+
     return (
         <div>
             <button onClick={()=> setCount(count+1)}>click{count}</button>

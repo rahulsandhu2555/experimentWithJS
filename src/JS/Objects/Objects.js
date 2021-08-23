@@ -21,16 +21,27 @@ function ObjectExample(){
         for(let key in obj1) {
             //key ...keys
         }
+    //to assign a method
+        //1. obj1.greet = function (){}
+        //2. function greet(){}
+        //   obj1.greet = greet;
+        //3. const obj ={
+        //   greet: function (){}
+        //  }
+        //4. const obj ={ => after ES6
+        //   greet(){}
+        //  }
 
     //Object property types
         //1. Data properties
             //[[Configurarable]] => if property can be delete by delete operator //default  => true
+                //once the property is defined non-configurable, it can be configurable again, only [[Writable]] can be changed
             //[[Enumerable]] => if property will be returned in for...in //default  => true
             //[[Writable]] => specifies if value can be changed //default  => true
             //[[Value]] => contains the actual value of the property //default  => undefined
 
             //to change these attributes use => Object.defineProperty()
-            //Object.defineProperty() or Object.defineProperties()
+            //Object.defineProperty() or Object.defineProperties() => for defining multiple properties
             //if used Object.defineProperty() to add the property then [[Configurarable]], [[Enumerable]], [[Writable]] false by default, if not explicitly defined
             //'use strict';
 
@@ -47,6 +58,21 @@ function ObjectExample(){
             //[[Enumerable]]
             //[[Get]] => when you read accessor property, called automatically // default => undefined
             //[[Set]] => if you set value, this is automatically called
+                //to define [[Get]] and [[Set]] you must use Object.defineProperty()
+                    Object.defineProperty(person, 'fullName', {
+                        get: function () {
+                            return this.firstName + ' ' + this.lastName;
+                        },
+                        set: function (value) {
+                            let parts = value.split(' ');
+                            if (parts.length == 2) {
+                                this.firstName = parts[0];
+                                this.lastName = parts[1];
+                            } else {
+                                throw 'Invalid name format';
+                            }
+                        }
+                    });
         //3. object property descriptor
             //Object.getOwnPropertyDescriptor(obj, age) //object and property name
             let person2 = {
@@ -62,6 +88,30 @@ function ObjectExample(){
             //     configurable: true
             // }
         //in ES6 obj.propertyIsEnumerable(prop) can be used to check if the property is enumerable or not
+
+    //Ways to create the Object
+        //Object literal =>
+            // const person = {}
+        //with new keyword
+            function Person(firstName, lastName) {
+                this.firstName = firstName;
+                this.lastName = lastName;
+            }
+            let person3 = new Person('John','Doe');
+                //new keywords does three thing
+                    //1. creates empty object, assigns to this
+                    //2. assigns values to this object
+                    //3. returns this object
+                    //equivalent to =>
+                        function Person(firstName, lastName) {
+                            // this = {};
+
+                            // add properties to this
+                            this.firstName = firstName;
+                            this.lastName = lastName;
+
+                            // return this;
+                        }
     //return type from the function constructor
         function Person3(){
             this.firstName= 'John';
@@ -74,6 +124,17 @@ function ObjectExample(){
     // if calling function constructor without new
         //let person3 = Person3('John','Doe'); //executes like a normal function, in this case, this keyword is not bound
                         //to Person object, it is bound to global object
+        //to prevent function constructor calling without the new keyword, use new.target (in ES6)
+            //if constructor function is called with the new keyword, returns function reference, else returns undefined
+                function Person(firstName, lastName) {
+                    if (!new.target) {
+                        console.log('Called without new keyword')
+                        return new Person(firstName, lastName);
+                    }
+
+                    this.firstName = firstName;
+                    this.lastName = lastName;
+                }
 
     //Durable constructor pattern to create Objects
         //does not have public property, its method does not interact with this keyword
