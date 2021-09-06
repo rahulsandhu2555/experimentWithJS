@@ -1,6 +1,11 @@
 import React from "react";
+import {convertToViewFromArrayOfObj} from "../../components/PageCompnents/componentList";
 
 function PromiseApi(){
+    const data = [
+        {
+            sec:{
+                pre:`
     //1. Promise.all
             // takes array of promises and returns a promise, once all promise settled, result is also an array[...]
             //order of resulting array is same, even if any takes longer than other
@@ -18,7 +23,7 @@ function PromiseApi(){
         // Promise.all waits until all jobs are resolved
         Promise.all(requests)
             .then(responses => responses.forEach(
-                response => alert(`${response.url}: ${response.status}`)
+                response => alert({response.url}: {response.status})
             ));
     }
 
@@ -55,9 +60,13 @@ function PromiseApi(){
         // if we forget to add .catch, then, after the microtask queue is empty, the engine triggers the event:unhandledrejection
 
     }
+                `
+        }
+        }
+    ];
 
     return(
-        <>Promise Api</>
+        <>{convertToViewFromArrayOfObj(data)}</>
     )
 }
 export default PromiseApi

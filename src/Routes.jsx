@@ -8,18 +8,26 @@ import React from "react";
 import ArrayPage from "./JS/Common/ArrayPage";
 import App from "./App";
 import Navbar from "./components/Navbar/Navbar";
+import Git from "./GIT/git";
+import DS from "./DS";
+import ExtraTools from "./ExtraTools";
+import JavaScript from "./JS/JavaScript";
 
 function Routes() {
   return (
-    <div style={{ display: "flex" }}>
-      <div style={{ width: "20%" }}>
+    <div style={{ display: "flex", flexDirection:'column' }}>
+      <div style={{ }}>
         <Navbar />
       </div>
-      <div style={{ width: "80%" }}>
+      <div style={{ }}>
         <Router>
           <Switch>
             <Route path="/home" component={App} />
             <Route path="/array" component={ArrayPage} />
+            <Route path="/git" component={Git} />
+            <Route path="/ds" component={DS} />
+            <Route path="/extra-tools" component={ExtraTools} />
+            <Route path="/js/:topic/:subtopic" component={JavaScript} />
             <Redirect from="/" to="/home" />
           </Switch>
         </Router>

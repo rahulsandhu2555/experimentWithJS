@@ -1,4 +1,12 @@
-/*
+import React from "react";
+import { convertToViewFromArrayOfObj } from "../../components/PageCompnents/componentList";
+
+export function SetTimeoutSetInterval() {
+  const data = [
+    {
+      sec: {
+        pre: `
+        
     setTimeout and setInterval are not the methods of JS, functionalities of the browser being used by these names
     and the duration is minimum delay not guaranteed delay.
 
@@ -33,4 +41,9 @@
         //time interval is always the same.
 
     //if the code takes longer to run, its better to go for the recursive timeout rather than interval
- */
+        `,
+      },
+    },
+  ];
+  return convertToViewFromArrayOfObj(data);
+}

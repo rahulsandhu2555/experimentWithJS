@@ -1,7 +1,12 @@
 import React from "react";
+import {convertToViewFromArrayOfObj} from "../../components/PageCompnents/componentList";
 
 function Throttling(){
-
+    const data = [
+        {
+            sec:{
+                pre:`
+                
     //Throttling a button so can't spam click
     //Throttling a mousemove/touchmove event handler
     const throttle = (func, limit) => {
@@ -36,8 +41,10 @@ function Throttling(){
             }
         }
     }
-    return(
-        <>Throlling</>
-    )
+                `
+            }
+        }
+    ];
+    return convertToViewFromArrayOfObj(data);
 }
 export default Throttling

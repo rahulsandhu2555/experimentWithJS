@@ -3,6 +3,9 @@ import {ReactChild, ReactChildren} from "react";
 export const V=(props:any) =>{
     return <span className={'text-blue-500'}>{props.children}</span>
 }
+export const Para=(props:any) =>{
+    return <p className={'text-blue-500'}>{props.children}</p>
+}
 export const Comment=(props:any) =>{
     return <div className={'text-green-500'}>{props.children}</div>
 }

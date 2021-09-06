@@ -1,6 +1,6 @@
 import React, { createElement } from "react";
 import {CodeBlock, Comment, Gray, Heading, Log, SubHeading, V} from "../../components/Var";
-import Section from "../../components/Section/Section";
+import Section from "../../components/PageCompnents/Section";
 
 function ArrayPage(props) {
   const content = `

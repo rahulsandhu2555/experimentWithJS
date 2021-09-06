@@ -1,8 +1,12 @@
 import React from "react";
-import PromiseApi from "./PromiseApi";
-import AsyncAwait from "./AsyncAwait";
+import {convertToViewFromArrayOfObj} from "../../components/PageCompnents/componentList";
 
 export default function PromiseExample(){
+    const data = [
+        {
+            sec:{
+                pre:`
+                
     const x1 = false;
     if(x1){
         const promise1 = new Promise((resolve, reject) => {
@@ -173,11 +177,13 @@ export default function PromiseExample(){
         }).catch(alert);
         //and => no, why?
     }
+                `
+            }
+        }
+    ];
     return(
         <>
-            Promise
-            <PromiseApi/>
-            <AsyncAwait/>
+            {convertToViewFromArrayOfObj(data)}
         </>
     )
 }
