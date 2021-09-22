@@ -18,7 +18,7 @@ function CodeSplitting() {
         multiple 3rd party library, and bundle size is big.
       </p>
       <H3>Ways to Split Code</H3>
-      <a href="https://webpack.js.org/guides/code-splitting/" target={"_blank"}>
+      <a href="https://webpack.js.org/guides/code-splitting/" target={"_blank"} rel="noreferrer">
         Webpack-splitting
       </a>
 
