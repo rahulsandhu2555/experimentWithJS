@@ -16,12 +16,12 @@ import ReactComp from "./React/React";
 
 function Routes() {
   return (
-    <div style={{ display: "flex", flexDirection:'column' }}>
-      <div style={{ }}>
-        <Navbar />
-      </div>
-      <div style={{ }}>
+    <div style={{ display: "flex", flexDirection: "column" }}>
+      <div style={{}}>
         <Router>
+          <div style={{}}>
+            <Navbar />
+          </div>
           <Switch>
             <Route path="/home" component={App} />
             <Route path="/array" component={ArrayPage} />
@@ -29,6 +29,7 @@ function Routes() {
             <Route path="/ds" component={DS} />
             <Route path="/extra-tools" component={ExtraTools} />
             <Route path="/js/:topic/:subtopic" component={JavaScript} />
+            <Route path="/react" component={ReactComp} />
             <Route path="/react/:topic/:subtopic" component={ReactComp} />
             <Redirect from="/" to="/home" />
           </Switch>

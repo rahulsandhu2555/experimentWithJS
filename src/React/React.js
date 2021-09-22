@@ -1,47 +1,37 @@
-import React from "react";
-import {useHistory, useParams} from "react-router-dom";
+import React, { useState } from "react";
 import Button from "../components/common/Button";
-import {convertToViewFromArrayOfObj} from "../components/PageCompnents/componentList";
 import Intro from "./Intro";
+import Advance from "./Advance/Advance";
 
-export default function ReactComp(){
-    let { topic } = useParams();
-    const history = useHistory();
+export default function ReactComp() {
+  const [topic, setTopic] = useState("Intro");
+  const buttons = [
+    { title: "Intro", component: Intro },
+    { title: "Advance", component: Advance },
+  ];
+  function loadComponent() {
+    return React.createElement(
+      buttons.find((button) => button.title.includes(topic)).component,
+      {},
+      {}
+    );
+  }
 
-
-    const data =[
-        {
-            sec:{
-                pre:{
-                    list:[
-                        
-                    ]
-                }
-
-            }
-        }
-    ];
-
-    const buttons = [
-        {title:'Info', url:'/react/info/intro', component: Intro},
-    ];
-    function loadComponent(){
-        if(topic === 'theory'){
-            return convertToViewFromArrayOfObj(data)
-        }else {
-            return React.createElement(
-                buttons.find(button => button.url.includes(topic)).component,{},{}
-            )
-        }
-    }
-
-    return(
-        <>
-            ...React
-            {
-                buttons.map(button => <Button title={button.title} onClick={()=> history.push(button.url)}/>)
-            }
-            {loadComponent()}
-        </>
-    )
+  return (
+    <>
+      <div
+        style={{
+          width: "100%",
+          padding: "5px",
+          marginTop: "5px",
+          borderTop: "1px solid gray",
+        }}
+      >
+        {buttons.map((button) => (
+          <Button title={button.title} onClick={() => setTopic(button.title)} />
+        ))}
+      </div>
+      {loadComponent()}
+    </>
+  );
 }

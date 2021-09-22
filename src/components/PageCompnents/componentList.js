@@ -1,5 +1,5 @@
 import Section from "./Section";
-import {H4, H6} from "./H4";
+import {H4, H6} from "./Typography";
 import List from "./List";
 import Page from "./Page";
 import React from "react";
