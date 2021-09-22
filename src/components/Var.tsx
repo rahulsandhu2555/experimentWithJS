@@ -1,4 +1,3 @@
-import {ReactChild, ReactChildren} from "react";
 
 export const V=(props:any) =>{
     return <span className={'text-blue-500'}>{props.children}</span>

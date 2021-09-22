@@ -123,3 +123,7 @@
     //Input event => fires whenever <input>, <select>, and <textarea> changes
         //fires everytime any change occurs
         //unlike change event (fires when value committed) , it fires on every change
+
+    //In React
+        //<input value="hi" /> => non editable
+        //<input value={null} /> editable because value is null or undefined

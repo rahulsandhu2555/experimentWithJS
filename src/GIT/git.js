@@ -1,12 +1,19 @@
 // GIT => distributed version control system
 import React from "react";
 import {
-  convertToView,
   convertToViewFromArrayOfObj,
 } from "../components/PageCompnents/componentList";
 
 function Git() {
   const data = [
+    {
+      sec:{
+        h4:'Definitions',
+        list: [
+            'Untracked: Git sees a file not part of a previous commit',
+        ]
+      }
+    },
     {
       sec: {
         h4: "Steps",
@@ -26,6 +33,15 @@ function Git() {
           "git merge testLogin",
         ],
       },
+    },
+    {
+      sec:{
+        h4: 'To add the files',
+        list:[
+            "git add . => to add all the files",
+            "git add "
+        ]
+      }
     },
     {
       sec: {

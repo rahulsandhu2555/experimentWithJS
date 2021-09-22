@@ -1,5 +1,5 @@
 import React, { createElement } from "react";
-import {CodeBlock, Comment, Gray, Heading, Log, SubHeading, V} from "../../components/Var";
+import { Comment, Gray, Log, V} from "../../components/Var";
 import Section from "../../components/PageCompnents/Section";
 
 function ArrayPage(props) {
@@ -47,12 +47,12 @@ function ArrayPage(props) {
         <Comment> To create array</Comment>
         <V>const</V> arr = new Array();{" "}
         <Gray>
-          // Array(10); to fix the size of array, new keyword optional
+          {/*// Array(100); to fix the size of array, new keyword optional*/}
         </Gray>
         <Log>
-          console.log(arr) <Gray>//={">"} []</Gray>
+          console.log(arr) <Gray>{">"} []</Gray>
         </Log>
-        //Array
+        {/*//Array*/}
         {generatePage()}
       </Section>
     </>

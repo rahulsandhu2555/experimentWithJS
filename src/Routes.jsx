@@ -12,6 +12,7 @@ import Git from "./GIT/git";
 import DS from "./DS";
 import ExtraTools from "./ExtraTools";
 import JavaScript from "./JS/JavaScript";
+import ReactComp from "./React/React";
 
 function Routes() {
   return (
@@ -28,6 +29,7 @@ function Routes() {
             <Route path="/ds" component={DS} />
             <Route path="/extra-tools" component={ExtraTools} />
             <Route path="/js/:topic/:subtopic" component={JavaScript} />
+            <Route path="/react/:topic/:subtopic" component={ReactComp} />
             <Redirect from="/" to="/home" />
           </Switch>
         </Router>

@@ -11,6 +11,7 @@ function App() {
         <Button title='Git' onClick={()=>history.push('/git')}/>
         <Button title='DS' onClick={()=>history.push('/ds')}/>
         <Button title='JS' onClick={()=>history.push('/js/theory/async')}/>
+        <Button title='React' onClick={()=>history.push('/react/theory/intro')}/>
         <Button title='Extra Tools' onClick={()=>history.push('/extra-tools')}/>
     </div>
   );

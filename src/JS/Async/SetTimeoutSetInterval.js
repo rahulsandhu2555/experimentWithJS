@@ -1,4 +1,3 @@
-import React from "react";
 import { convertToViewFromArrayOfObj } from "../../components/PageCompnents/componentList";
 
 export function SetTimeoutSetInterval() {

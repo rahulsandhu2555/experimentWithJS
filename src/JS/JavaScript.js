@@ -10,7 +10,6 @@ import Async from "./Async/Async";
 export default function JavaScript(){
     let { topic } = useParams();
     const history = useHistory();
-    console.log(topic)
     const data = [
         {
             sec:{
