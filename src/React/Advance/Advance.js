@@ -2,12 +2,14 @@ import React, {useState} from 'react';
 import Button from "../../components/common/Button";
 import Accessibility from "./Accessibility";
 import CodeSplitting from "./CodeSplitting";
+import Context from "./Context";
 
 function Advance(props) {
     const [topic, setTopic] = useState('Accessibility');
     const buttons = [
         {title:'Accessibility', component: Accessibility},
         {title:'CodeSplitting', component: CodeSplitting},
+        {title:'Context', component: Context},
     ];
     function loadComponent(){
         return React.createElement(

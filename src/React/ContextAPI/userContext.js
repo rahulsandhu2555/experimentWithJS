@@ -1,10 +1,10 @@
 import React from "react";
 
-// const UesrContext = React.createContext();
-const UesrContext = React.createContext('I am default'); // to set the defalut value, do this
+// const UserContext = React.createContext();
+const UserContext = React.createContext('I am default'); // to set the defalut value, do this
 
-const UserProvider = UesrContext.Provider;
-const UserConsumer = UesrContext.Consumer;
+const UserProvider = UserContext.Provider;
+const UserConsumer = UserContext.Consumer;
 
 export {UserConsumer, UserProvider}
-export default UesrContext // to use the context type
+export default UserContext // to use the context type
