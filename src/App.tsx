@@ -13,6 +13,7 @@ function App() {
         <Button title='JS' onClick={()=>history.push('/js/theory/async')}/>
         <Button title='React' onClick={()=>history.push('/react/theory/intro')}/>
         <Button title='Extra Tools' onClick={()=>history.push('/extra-tools')}/>
+        <Button title='DataExtractor' onClick={()=>history.push('/data-extraction-tool')}/>
     </div>
   );
 }

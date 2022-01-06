@@ -2,8 +2,6 @@ import React from 'react';
 import Page from "../../components/PageCompnents/Page";
 import {H2, } from "../../components/PageCompnents/Typography";
 import {Para} from "../../components/Var";
-import UesrContext from "../ContextAPI/userContext";
-import TestContextType from "../ContextAPI/ContextType";
 import Note from "../../components/PageCompnents/Note";
 import Code from "../../components/PageCompnents/Code";
 

@@ -3,6 +3,7 @@ import Button from "../../components/common/Button";
 import Accessibility from "./Accessibility";
 import CodeSplitting from "./CodeSplitting";
 import Context from "./Context";
+import ErrorBoundary from "./ErrorBoundary";
 
 function Advance(props) {
     const [topic, setTopic] = useState('Accessibility');
@@ -10,6 +11,7 @@ function Advance(props) {
         {title:'Accessibility', component: Accessibility},
         {title:'CodeSplitting', component: CodeSplitting},
         {title:'Context', component: Context},
+        {title:'ErrorBoundary', component: ErrorBoundary},
     ];
     function loadComponent(){
         return React.createElement(
