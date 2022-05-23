@@ -24,6 +24,7 @@ const person2 ={
         console.log(withLastName());
     }
 }
+
 person2.sayMyname(); //will print => rahul sandhu
     //coz when moved to this.name, it checked in its parent, sayMyName(), and checked its scope, it was being called by
     //person2, to it took the reference for this from person2
